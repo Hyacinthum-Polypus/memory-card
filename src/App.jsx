@@ -44,21 +44,23 @@ function App() {
     <div className="game">
       <h2>Highscore: {highScore}</h2>
       <h2>Score: {score}</h2>
-      {pokemons.map(element => {
-        return (
-          <Card pokemonName={element} key={element} onChildClick={() => {
-            if(clickedPokemons.has(element)) {
-              if(score > highScore)
-                setHighScore(score);
-              setScore(0);
-              setClickedPokemon(new Set());
-            } else {
-              setScore(score + 1);
-              setClickedPokemon(clickedPokemons.add(element));
-            }
-          }} />
-        )
-      })}
+      <div className="cards">
+        {pokemons.map(element => {
+          return (
+            <Card pokemonName={element} key={element} onChildClick={() => {
+              if(clickedPokemons.has(element)) {
+                if(score > highScore)
+                  setHighScore(score);
+                setScore(0);
+                setClickedPokemon(new Set());
+              } else {
+                setScore(score + 1);
+                setClickedPokemon(clickedPokemons.add(element));
+              }
+            }} />
+          )
+        })}
+      </div>
     </div>
   )
 }
